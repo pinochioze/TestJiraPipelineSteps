@@ -35,7 +35,7 @@ node {
     
     println '===================== EDIT COMMENTS IN   ================================================'
     comment = [ body: '||No||PR||Commit||UnitTest||FunctionTest||PerfTest||Note||\n|l|PR-10|qwertyuiopasd|Passed|Passed|Passed| |\n|2|PR-20|abcdefghijklm|Passed|Passed|Passed| |\n|3|PR-30|abcdefghijklm|Passed|Passed|Passed| |' ]
-    jiraEditComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10001', input: comment
+    jiraEditComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10007777777', input: comment
 
     println '===================== GET COMMENT IN SOF-6  =============================================='
     def comment = jiraGetComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10006'
