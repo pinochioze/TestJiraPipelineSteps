@@ -1,13 +1,21 @@
 #!/usr/bin/env groovy
 node {
   stage('JIRA') {
-    
+
+    bash '''#!/bin/bash
+            echo "hello world"
+            whoami
+            pwd
+            ls -atl .
+         '''
+
+/*    
     println '===================== GET SERVER INFO ====================================================='
     withEnv(['JIRA_SITE=JiraLocal']) {
       def serverInfo = jiraGetServerInfo()
       echo serverInfo.data.toString()
     }
-/*
+
 
     println '===================== GET INFO from SOF-6 issue  =========================================='
     def issue_sof6 = jiraGetIssue idOrKey: 'SOF-6', site: 'JiraLocal'
