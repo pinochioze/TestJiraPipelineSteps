@@ -29,6 +29,13 @@ node {
                            ]]
     response = jiraEditIssue idOrKey: 'SOF-6', issue: testIssue, site: 'JiraLocal'
 
+    println '===================== ADD COMMENTS IN SOF-6  ============================================'
+    comment = [ body: 'There is new commit on GitHub' ]
+    jiraAddComment site: 'JiraLocal', idOrKey: 'SOF-6', input: comment
+    
+    println '===================== EDIT COMMENTS IN   ================================================'
+    comment = [ body: '||No||PR||Commit||UnitTest||FunctionTest||PerfTest||Note||\n|l|PR-10|qwertyuiopasd|Passed|Passed|Passed| |\n|2|PR-20|abcdefghijklm|Passed|Passed|Passed| |\n|3|PR-30|abcdefghijklm|Passed|Passed|Passed| |' ]
+    jiraEditComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10001', input: comment
 
     println '===================== GET COMMENT IN SOF-6  =============================================='
     def comment = jiraGetComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10006'
@@ -38,16 +45,6 @@ node {
     println '===================== GET ALL COMMENTS IN SOF-6  ========================================='
     def comments = jiraGetComments site: 'JiraLocal', idOrKey: 'SOF-6'
     echo comments.data.toString()
-    
-    println '===================== EDIT COMMENTS IN   ================================================'
-    comment = [ body: '||No||PR||Commit||UnitTest||FunctionTest||PerfTest||Note||\n|l|PR-10|qwertyuiopasd|Passed|Passed|Passed| |\n|2|PR-20|abcdefghijklm|Passed|Passed|Passed| |\n|3|PR-30|abcdefghijklm|Passed|Passed|Passed| |' ]
-    jiraEditComment site: 'JiraLocal', idOrKey: 'SOF-6', commentId: '10001', input: comment
-
-
-    println '===================== ADD COMMENTS IN SOF-6  ============================================'
-    comment = [ body: 'There is new commit on GitHub' ]
-    jiraAddComment site: 'JiraLocal', idOrKey: 'SOF-6', input: comment
-
 
     println '===================== UPLOAD ATTACHMENT IN SOF-6  =========================================='
     def attachment = jiraUploadAttachment idOrKey: 'SOF-6', file: 'TestingReport4JiraSteps.csv', site: 'JiraLocal'
