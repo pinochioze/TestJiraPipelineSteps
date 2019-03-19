@@ -42,7 +42,7 @@ node {
 
 */
     println '===================== UPLOAD ATTACHMENT IN SOF-6  =========================================='
-    withEnv(['JIRA_SITE=LOCAL']) {
+    withEnv(['JIRA_SITE=JiraLocal']) {
       def attachment = jiraUploadAttachment idOrKey: 'SOF-6', file: 'TestingReport4JiraSteps.csv'
       echo attachment.data.toString()
     }
