@@ -1,15 +1,15 @@
 #!/usr/bin/env groovy
 node {
   stage('JIRA') {
-
-    bash '''#!/bin/bash
+    checkout scm
+    sh '''#!/bin/bash
             echo "hello world"
             whoami
             pwd
             ls -atl .
          '''
 
-/*    
+    
     println '===================== GET SERVER INFO ====================================================='
     withEnv(['JIRA_SITE=JiraLocal']) {
       def serverInfo = jiraGetServerInfo()
@@ -48,13 +48,10 @@ node {
     comment = [ body: 'There is new commit on GitHub' ]
     jiraAddComment site: 'JiraLocal', idOrKey: 'SOF-6', input: comment
 
-*/
-    println '===================== UPLOAD ATTACHMENT IN SOF-6  =========================================='
-    withEnv(['JIRA_SITE=JiraLocal']) {
-      def attachment = jiraUploadAttachment idOrKey: 'SOF-6', file: 'TestingReport4JiraSteps.csv'
-      echo attachment.data.toString()
-    }
 
+    println '===================== UPLOAD ATTACHMENT IN SOF-6  =========================================='
+    def attachment = jiraUploadAttachment idOrKey: 'SOF-6', file: 'TestingReport4JiraSteps.csv', site: 'JiraLocal'
+    echo attachment.data.toString()
 
  }
 }
