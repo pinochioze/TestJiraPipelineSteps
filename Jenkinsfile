@@ -9,7 +9,7 @@ node {
             ls -atl .
          '''
 
-    echo 'Create Branch TestPR_first then create PR'
+    echo 'Create Branch TestPR_first then create PR-2 om GIT'
     println '===================== GET SERVER INFO ====================================================='
     withEnv(['JIRA_SITE=JiraLocal']) {
       def serverInfo = jiraGetServerInfo()
