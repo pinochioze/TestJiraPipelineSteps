@@ -3,7 +3,7 @@ node {
   stage('JIRA') {
     checkout scm
     sh '''#!/bin/bash
-            echo "hello world"
+            echo "hello world - testing jenkins integration for jira"
             whoami
             pwd
             ls -atl .
