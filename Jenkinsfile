@@ -3,13 +3,13 @@ node {
   stage('JIRA') {
     checkout scm
     sh '''#!/bin/bash
-            echo "hello world"
+            echo "hello world - testing jenkins integration for jira"
             whoami
             pwd
             ls -atl .
          '''
 
-    
+    echo 'Create Branch TestPR_second then create PR-3 om GIT - update 6th'
     println '===================== GET SERVER INFO ====================================================='
     withEnv(['JIRA_SITE=JiraLocal']) {
       def serverInfo = jiraGetServerInfo()
