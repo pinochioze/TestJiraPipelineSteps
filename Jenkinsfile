@@ -9,7 +9,7 @@ node {
             ls -atl .
          '''
 
-    
+    echo '${sha1}'
     println '===================== GET SERVER INFO ====================================================='
     withEnv(['JIRA_SITE=JiraLocal']) {
       def serverInfo = jiraGetServerInfo()
